@@ -1,0 +1,46 @@
+<div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="addDataTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addDataTitle">Add Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="/admin/addData" method="POST" id="addDataForm">
+        <input type="hidden" name="table" value="{{table}}">
+        <input type="hidden" name="columns" value="{{columns}}">
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="addDataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  {% for col in columns %}
+                  <th>
+<!--                    <input type="hidden" name="col{{loop.index}}" value="{{col['COLUMN_NAME']}}">-->
+                    {{col['COLUMN_NAME']}}
+                  </th>
+                  {% endfor %}
+                </tr>
+              </thead>
+                <tbody>
+                  <tr>
+                    {% for col in columns %}
+                      <td><input type="text" name="input{{loop.index}}"></td>
+                    {% endfor %}
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="insertData()">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>

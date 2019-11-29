@@ -1,0 +1,60 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">{{table.upper()}}</h1>
+  <p class="mb-4">Manage {{table.upper()}} table.</p>
+
+  <!-- DataTables Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <div>
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">DataTable</h6>
+      </div>
+      <div>
+        <button class="btn btn-sm btn-primary ml-1" type="button" onclick="updateData()">Change</button>
+        <button class="btn btn-sm btn-primary ml-1" type="button" data-toggle="modal" data-target="#addData">Add</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <form id="updateDataForm">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr class="tableHead">
+              <th></th>
+              {% for col in columns %}
+              <th>{{col['COLUMN_NAME']}}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+            <tbody>
+              <input type="hidden" name="table" value="{{table}}">
+              {% for row in rows %}
+                <tr class="tableRow">
+                  <td>
+                    <button type="button" onclick="deleteData(this);" class="close" id="btn{{loop.index}}">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </td>
+                  {% for col in columns %}
+                    <td class="{{ col['COLUMN_NAME'] }}">
+                      <div class="divTxt" contentEditable>{{ row[col['COLUMN_NAME']] }}</div>
+                    </td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% include 'admin/addData.html' %}
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
