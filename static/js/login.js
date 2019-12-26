@@ -17,6 +17,9 @@ function login() {
         console.log("로그인 인증 성공 ");
         alert("짱짱");
       } else if (res == "E0001") {
+        console.log("로그인 인증 실패: 존재하지 않는 아이디");
+        alert("로그인 인증 실패: 존재하지 않는 아이디");
+      } else if (res == "E0002") {
         console.log("로그인 인증 실패: 잘못된 패스워드");
         alert("로그인 인증 실패: 잘못된 패스워드");
       } else {

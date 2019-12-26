@@ -110,7 +110,12 @@ getAward = """
         """
 
 
-
+### 로그인 관련 쿼리 ###
+getAdminIdList = """
+        SELECT  ADMIN_ID
+        FROM    ADMIN
+        WHERE   1 = 1
+        """
 getAdminPw = """
         SELECT  ADMIN_PW
         FROM    ADMIN

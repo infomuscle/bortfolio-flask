@@ -107,6 +107,12 @@ def getLotto():
 
 
 ########## 로그인 관련 기능 ##########
+def getAdminIdList():
+    sql = query.getAdminIdList
+    db = getConnect()
+    cursor = getCursor(db)
+    return getResult(db, cursor, sql, "getAdminIdList()")
+
 def getAdminPw(adminId):
     sql = query.getAdminPw.format(adminId=adminId)
     db = getConnect()

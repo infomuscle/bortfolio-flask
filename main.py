@@ -54,19 +54,25 @@ def loginValidation():
     adminId = data['adminId']
     adminPw = data['adminPw']
 
-
     # 아이디 체크
+    adminIdObjList = dao.getAdminIdList()
 
+    adminIdList = []
+
+    for idObj in adminIdObjList:
+        adminIdList.append(idObj['ADMIN_ID'])
+
+    if adminId not in adminIdList:
+        print("Wrong ID Error")
+        return "E0001"
 
     # 패스워드 체크
-    adminPwObject = dao.getAdminPw(adminId)
-    print(adminPwObject)
-
-    adminPwHashed = adminPwObject[0]['ADMIN_PW']
+    adminPwObjList = dao.getAdminPw(adminId)
+    adminPwHashed = adminPwObjList[0]['ADMIN_PW']
 
     if adminPw != adminPwHashed:
         print("Wrong Password Error")
-        return "E0001"
+        return "E0002"
 
     return "0000"
 
