@@ -6,7 +6,7 @@ getWork = """
                   , CTG
                   , DESCRIPTION
                   , CLIENT
-                  , DATE_FORMAT(STRT_DT, '%M %Y') AS STRT_DT
+                  , DATE_FORMAT(START_DT, '%M %Y') AS START_DT
                   , DATE_FORMAT(END_DT, '%M %Y') AS END_DT
                   , REP_IMG
                   , URL
@@ -18,12 +18,12 @@ getWork = """
         ;
         """
 
-getExperience = """
+getExperience = """ 
         SELECT
                 COMPANY
               , JOB
               , DESCRIPTION
-              , DATE_FORMAT(STRT_DT, '%M %Y') AS STRT_DT
+              , DATE_FORMAT(START_DT, '%M %Y') AS START_DT
               , DATE_FORMAT(END_DT, '%M %Y') AS END_DT
         FROM    EXPERIENCE
         WHERE       1 = 1
@@ -39,7 +39,7 @@ getEducation = """
               , STUDY
               , GRADE
               , GRADE_MAX
-              , DATE_FORMAT(STRT_DT, '%M %Y') AS STRT_DT
+              , DATE_FORMAT(START_DT, '%M %Y') AS START_DT
               , DATE_FORMAT(END_DT, '%M %Y') AS END_DT
         FROM    EDUCATION
         WHERE   1 = 1
@@ -71,6 +71,18 @@ getSkillFramework = """
         ;
         """
 
+getSkillDatabase = """
+        SELECT      *
+        FROM        SKILL
+        WHERE       1 = 1
+        AND         SKILL_TYPE = 'Database'
+        # AND         USE_PERIOD IS NOT NULL
+        # AND         LOGO_IMG IS NOT NULL
+        AND         USE_YN = 'Y'
+        ORDER BY    SKILL_NO
+        ;
+        """
+
 getCert = """
         SELECT
                     CERT_NM
@@ -84,7 +96,28 @@ getCert = """
         ;
         """
 
+getAward = """
+        SELECT
+                    AWARD_NM
+                  , DESCRIPTION
+                  , AWARDER
+                  , DATE_FORMAT(AWARD_DT, '%M %Y') AS AWARD_DT
+        FROM        AWARD
+        WHERE       1 = 1
+        AND         USE_YN = 'Y'
+        ORDER BY    AWARD_NO
+        ;
+        """
 
+
+
+getAdminPw = """
+        SELECT  ADMIN_PW
+        FROM    ADMIN
+        WHERE   1 = 1
+        AND     ADMIN_ID = '{adminId}'
+        ;
+        """
 
 ### ADMIN 테이블 컨트롤 ###
 getColumns = """

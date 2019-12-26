@@ -22,8 +22,10 @@ def resume():
     education   = dao.getEducation()
     language    = dao.getSkillLanguage()
     framework   = dao.getSkillFramework()
+    database    = dao.getSkillDatabase()
     certification  = dao.getCert()
-    return render_template('resume.html', experience = experience, education = education, language = language, framework = framework, certification = certification)
+    award       = dao.getAward()
+    return render_template('resume.html', experience = experience, education = education, language = language, framework = framework, database = database, certification = certification, award = award)
 
 @app.route('/works')
 def works():
@@ -45,6 +47,29 @@ def login():
 
 
 # Admin -----------------------------------------------
+@app.route('/admin/loginValidation', methods=['POST'])
+def loginValidation():
+    data = request.get_json()
+
+    adminId = data['adminId']
+    adminPw = data['adminPw']
+
+
+    # 아이디 체크
+
+
+    # 패스워드 체크
+    adminPwObject = dao.getAdminPw(adminId)
+    print(adminPwObject)
+
+    adminPwHashed = adminPwObject[0]['ADMIN_PW']
+
+    if adminPw != adminPwHashed:
+        print("Wrong Password Error")
+        return "E0001"
+
+    return "0000"
+
 @app.route('/admin/dashboard')
 def dashboard():
     return render_template('admin/dashboard.html')
@@ -92,7 +117,11 @@ def updateData():
     for c in cols:
         temp = ""
         for k in c.keys():
-            temp += (k + "='" + c[k] + "'")
+            if c[k] == 'None':
+                c[k] = 'NULL'
+                temp += (k + "=" + c[k])
+            else:
+                temp += (k + "='" + c[k] + "'")
             temp += ","
         setting = temp[:-1]
         settings.append(setting)
@@ -152,6 +181,7 @@ def sendMail():
 
 if __name__ == '__main__':
     app.run()
+
 
 # 테이블명 = WORK
 # 컬럼: WORK_NO(INT) | TITLE(VARCHAR 20, PK) | SUB_TITLE(VARCHAR 20) | CTG(VARCHAR 20) | DESC(VARCHAR 500) | CLIENT(VARCHAR 20) | STRT_DT(DATE) | END_DT(DATE) | REP_IMG(VARCHAR 100) | URL (VARCHAR 100) | USE_YN(VARCHAR 1)

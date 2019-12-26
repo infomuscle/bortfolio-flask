@@ -1,7 +1,7 @@
 import pymysql, logging, random, query
 
 
-########## dao 기본 함수 ##########
+########## dao 유틸 함수 ##########
 def getConnect():
     db = pymysql.connect(host='localhost',
                          port=3306,
@@ -35,7 +35,6 @@ def mnplData(db, cursor, sql, mthdName):
         logging.error("error: " + mthdName)
     finally:
         db.close()
-
 ##################################
 
 def getWork():
@@ -69,11 +68,23 @@ def getSkillFramework():
     cursor = getCursor(db)
     return getResult(db, cursor, sql, "getSkillFramework()")
 
+def getSkillDatabase():
+    sql = query.getSkillDatabase
+    db = getConnect()
+    cursor = getCursor(db)
+    return getResult(db, cursor, sql, "getSkillDatabase()")
+
 def getCert():
     sql = query.getCert
     db = getConnect()
     cursor = getCursor(db)
     return getResult(db, cursor, sql, "getCert()")
+
+def getAward():
+    sql = query.getAward
+    db = getConnect()
+    cursor = getCursor(db)
+    return getResult(db, cursor, sql, "getAward()")
 
 def getLotto():
     lotto = []
@@ -95,6 +106,12 @@ def getLotto():
     return result
 
 
+########## 로그인 관련 기능 ##########
+def getAdminPw(adminId):
+    sql = query.getAdminPw.format(adminId=adminId)
+    db = getConnect()
+    cursor = getCursor(db)
+    return getResult(db, cursor, sql, "getAdminPw()")
 
 ########## ADMIN 테이블 조회 ##########
 def getColumns(table):
