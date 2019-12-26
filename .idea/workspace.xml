@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7b25213b-0883-49b3-b1b0-ec7d4d5316ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/query.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/login.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,7 +69,7 @@
       <workItem from="1575098048276" duration="5353000" />
       <workItem from="1575977666226" duration="931000" />
       <workItem from="1576751179265" duration="109000" />
-      <workItem from="1577353306611" duration="4884000" />
+      <workItem from="1577353306611" duration="5475000" />
     </task>
     <task id="LOCAL-00001" summary="로그인 인증 구현 - 초기 단계">
       <created>1577357113672</created>
@@ -80,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577357113672</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="로그인 인증 구현 - ID 체커">
+      <created>1577358598177</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577358598177</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,9 +106,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="로그인 인증 구현 - 초기 단계" />
-    <option name="LAST_COMMIT_MESSAGE" value="로그인 인증 구현 - 초기 단계" />
+    <MESSAGE value="로그인 인증 구현 - ID 체커" />
+    <option name="LAST_COMMIT_MESSAGE" value="로그인 인증 구현 - ID 체커" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask_webapp$flask_webapp.coverage" NAME="flask-webapp Coverage Results" MODIFIED="1577358548591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/flask_webapp$flask_webapp.coverage" NAME="flask-webapp Coverage Results" MODIFIED="1577359175757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

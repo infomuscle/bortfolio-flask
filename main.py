@@ -70,11 +70,11 @@ def loginValidation():
     adminPwObjList = dao.getAdminPw(adminId)
     adminPwHashed = adminPwObjList[0]['ADMIN_PW']
 
-    if adminPw != adminPwHashed:
+    if adminPw == adminPwHashed:
+        return "0000"
+    else:
         print("Wrong Password Error")
         return "E0002"
-
-    return "0000"
 
 @app.route('/admin/dashboard')
 def dashboard():

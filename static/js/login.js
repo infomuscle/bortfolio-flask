@@ -16,6 +16,7 @@ function login() {
       if (res == "0000"){
         console.log("로그인 인증 성공 ");
         alert("짱짱");
+        location.href = '/admin/dashboard';
       } else if (res == "E0001") {
         console.log("로그인 인증 실패: 존재하지 않는 아이디");
         alert("로그인 인증 실패: 존재하지 않는 아이디");
@@ -31,11 +32,7 @@ function login() {
       console.log("로그인 인증 ajax 통신 실패");
       alert("로그인 인증 ajax 통신 실패");
     }
-
   });
-
-
-
 }
 
 function unsupported() {
